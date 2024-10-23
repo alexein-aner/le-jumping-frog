@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://c74f1n10d7yb7"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_omud8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssdvr"]
+bg_color = Color(0, 0.481793, 0.384523, 0.243137)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6it0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3oxk"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 0.866667)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_346ah"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 0.866667)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Pause" type="Node"]
+script = ExtResource("1_omud8")
+
+[node name="PausePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssdvr")
+
+[node name="Label" type="Label" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -142.0
+offset_right = 280.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l6it0")
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -52.0
+offset_right = 135.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Resume" type="Button" parent="PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3oxk")
+text = "Resume"
+
+[node name="Main menu" type="Button" parent="PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_346ah")
+text = "Main menu"
+
+[connection signal="pressed" from="PausePanel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/Main menu" to="." method="_on_main_menu_pressed"]

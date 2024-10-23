@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clkhuc1rhsm0l"]
+
+[ext_resource type="Script" path="res://scripts/fall_area.gd" id="1_8ms3c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6mqw2"]
+
+[node name="FallArea" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_8ms3c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_6mqw2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

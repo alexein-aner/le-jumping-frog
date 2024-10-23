@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cverdgdypvdvx"]
+
+[ext_resource type="Texture2D" uid="uid://b5i34a2g34se3" path="res://assets/Items/Checkpoints/End/End (Idle).png" id="1_f34pk"]
+[ext_resource type="Script" path="res://scripts/trohpy.gd" id="1_ojatu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1koq"]
+size = Vector2(44, 43)
+
+[node name="Trohpy" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ojatu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f34pk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_m1koq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
